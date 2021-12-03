@@ -1,0 +1,2 @@
+module ScrimsHelper
+end

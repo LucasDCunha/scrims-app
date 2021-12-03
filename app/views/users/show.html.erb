@@ -1,0 +1,12 @@
+
+
+<p class="mt-3">
+<%= @user.email %>
+</p>
+<%= link_to "<button class='btn btn-primary'>Voltar</button>".html_safe, root_path%>
+
+<%= link_to "Edit", edit_user_path(@user), class: 'btn btn-lg mt-3 custom-btn-primary' %>
+
+<%= link_to "Novo time", new_team_url(), class: 'btn btn-lg mt-3 custom-btn-primary' %>
+
+<%= link_to "Minhas equipes", teams_path(), class: 'btn btn-lg mt-3 custom-btn-primary' %>

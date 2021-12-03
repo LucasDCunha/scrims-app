@@ -59,3 +59,4 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # MINHAS GEMS
 
 gem 'devise'
+gem 'simple_form'

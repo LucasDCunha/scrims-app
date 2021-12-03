@@ -1,5 +1,5 @@
 class Team < ApplicationRecord
-    belongs_to :users
+    belongs_to :user
     has_many :team_scrims, dependent: :destroy
     has_many :players, dependent: :destroy
     has_many :scrims, through: :team_scrims

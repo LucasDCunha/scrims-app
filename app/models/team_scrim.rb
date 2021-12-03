@@ -1,4 +1,4 @@
 class TeamScrim < ApplicationRecord
-    belongs_to :teams
-    belongs_to :scrims
+    belongs_to :team
+    belongs_to :scrim
 end

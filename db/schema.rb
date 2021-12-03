@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_25_205154) do
+ActiveRecord::Schema.define(version: 2021_12_03_224222) do
 
   create_table "chat_room_teams", force: :cascade do |t|
     t.integer "teams_id"
@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(version: 2021_11_25_205154) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.integer "users_id"
     t.string "name"
     t.integer "number_off_athletes"
     t.integer "level"
@@ -95,7 +94,8 @@ ActiveRecord::Schema.define(version: 2021_11_25_205154) do
     t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_teams_on_users_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -122,5 +122,4 @@ ActiveRecord::Schema.define(version: 2021_11_25_205154) do
   add_foreign_key "players", "teams", column: "teams_id"
   add_foreign_key "team_scrims", "scrims", column: "scrims_id"
   add_foreign_key "team_scrims", "teams", column: "teams_id"
-  add_foreign_key "teams", "users", column: "users_id"
 end
