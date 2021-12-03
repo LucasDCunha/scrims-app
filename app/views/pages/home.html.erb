@@ -1,1 +1,7 @@
-<h1 class=" m-5">teste</h1>
+<h1>teste</h1>
+
+<%= render "components/menu" %>
+
+<%= link_to "Profile", user_path(current_user), class: "nav-link" %>
+
+<%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
