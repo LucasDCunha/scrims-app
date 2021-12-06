@@ -1,12 +1,17 @@
-<h1> EDIT O USER </h1>
+<main>
+  <h1> EDIT O USER </h1>
 
-<div class="card p-4">
-  <div class="text-left">
-    <%= link_to "<p>voltar</p>".html_safe, user_path(@user)%>
+  <div class="card p-4">
+    <div class="text-left">
+      <%= link_to "<p>voltar</p>".html_safe, user_path(@user)%>
+    </div>
+    <%= simple_form_for @user do |f| %>
+      <%= f.input :email %>
+      <%= f.button :submit, 'Save', class: 'btn btn-lg mt-3 mb-2 back-btn' %>
+    <% end %>
+    </div>
   </div>
-  <%= simple_form_for @user do |f| %>
-    <%= f.input :email %>
-    <%= f.button :submit, 'Save', class: 'btn btn-lg mt-3 mb-2 back-btn' %>
-  <% end %>
-  </div>
-</div>
+</main>
+
+
+<%= render "components/menu" %>

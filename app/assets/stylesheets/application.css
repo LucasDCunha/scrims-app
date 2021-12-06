@@ -1,0 +1,141 @@
+body {
+    background-color: #182422;
+    color: white;
+    
+    font-family: "Changa", sans-serif;
+}
+
+main {
+    width: 70%;
+    float: right;
+    text-align: center;
+}
+
+.btn {
+    color: white;
+}
+
+.lateral {
+    height: 100%;
+    width: 30%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19); 
+}
+
+.divtitulo {
+    padding: 1em;
+    text-align: center;
+}
+
+.divlink {
+    display: block;
+    padding: 1vh;
+}
+
+.lateral a {
+    color: #818181;
+
+    font-size: 4vh;
+    text-decoration: none;
+
+    display: inline;
+    padding-left: 1vh;
+}
+
+.lateral i {
+    font-size: 4vh;
+    color: #818181;
+    margin-top: 0px;
+}
+
+.divlink:hover a {
+    color: white;
+}
+
+.divlink:hover i{
+    color: white;
+}
+
+.active {
+    background-color: #b38f00;
+}
+
+.active a {
+    color: white;
+}
+
+.active i {
+    color: white;
+}
+
+.subtitulo {
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+}
+
+.container-padrao {
+    width: 60%;
+    margin: auto auto 4vh;
+    border: 4px solid #b38f00;
+    border-radius: 2.5%;
+    text-align: center;
+}
+
+.holder-img {
+    font-size: 8em;
+    display: inline-block;
+    padding: 0.25em;
+}
+
+.container-padrao ul {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.container-padrao li {
+    display: block;
+    font-size: 2em;
+}
+
+.container-busca {
+    padding: 1em;
+}
+
+.botao-editar {
+    display: block;
+    margin: auto auto 1em;
+}
+
+.btn-primary {
+    background-color: #111;
+    border: #111;
+}
+
+.dados-equipe {
+    padding-top: 1em;
+    margin-bottom: 0;
+}
+
+.nova-equipe {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    vertical-align: middle;
+}
+
+.nova-equipe i {
+    font-size: 8em;
+    padding: 0.25em;
+}
+
+.nova-equipe a {
+    height: 100%;
+    font-size: 2em;
+    margin: auto 0;
+}

@@ -1,7 +1,55 @@
-<h1>teste</h1>
+<main>
+    <div class="section-padrao">
+        <h2 class="subtitulo">Próximo Treino</h2>
+        <div class="container-padrao container-treino-home">
+            <i class="far fa-file-image holder-img"></i>
+            <ul id="dados-treino">
+                <li id="nome-adv">Time X</li>
+                <li id="data-adv">01/07/2019 20:00</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-busca container-padrao">
+        <div id="div-h2-busca">
+            <h2>Buscar Scrim</h2>
+        </div>
+        <form action="">
+            <select name="selectequipe" class="selectbusca" id="selectequipe">
+                <option value="1">Equipe X</option>
+                <option value="2">Equipe Y</option>
+            </select>
+            <div class="flex">
+                <div class="flexdivbusca">
+                    <div>
+                        <label for="selectelo">Elo Mínimo</label>
+                    </div>
+                    <select name="selectelo" class="selectbusca" id="selectelo">
+                        <option value="1">Bronze</option>
+                        <option value="2">Prata</option>
+                        <option value="3">Ouro</option>
+                        <option value="4">Platina</option>
+                        <option value="5">Diamante</option>
+                        <option value="6">Mestre</option>
+                        <option value="7">Grão-Mestre</option>
+                        <option value="8">Desafiante</option>
+                    </select>
+                </div>
+                <div class="flexdivbusca">
+                    <div>
+                        <label for="selectnota" id="labelnota">Nota Mínima</label>
+                    </div>
+                    <input type="number" id="selectnota" name="selectnota" class="selectbusca" min="0" max="5">
+                </div>
+                <div class="flexdivbusca">
+                    <div>
+                        <label for="datahorabusca" id="labeldata">Data e Hora</label>
+                    </div>
+                    <input type="datetime-local" name="datahorabusca" id="datahorabusca" class="selectbusca">
+                </div>
+            </div>
+            <button type="submit" class="botao-form" id="botao-busca">Buscar</button>
+        </form>
+    </div>
+</main>
 
 <%= render "components/menu" %>
-
-<%= link_to "Profile", user_path(current_user), class: "nav-link" %>
-
-<%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>

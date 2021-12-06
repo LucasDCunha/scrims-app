@@ -1,1 +1,35 @@
-<h1>teste menu</h1>
+<link href="https://fonts.googleapis.com/css?family=Changa|Varela+Round&display=swap" rel="stylesheet">
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<nav class="lateral">
+    <div class="divtitulo">
+        <h1>BSI</h1>
+        <h2>Base de Scrim Integrada</h2>
+    </div>
+    <div class="divnav">
+        <div class="divlink active">
+        
+            <%= link_to "<i class='fas fa-home'></i> Home".html_safe, root_path() %>
+        </div>
+        <div class="divlink">
+            <a href=""><i class='fas fa-users'></i> Equipes</a>
+        </div>
+        <div class="divlink">
+            <a href=""><i class="fa fa-calendar"></i> Minhas Scrims</a>
+        </div>
+        <div class="divlink">
+            <a href=""><i class="fas fa-history"></i> Histórico</a>
+        </div>
+        <div class="divlink">
+            <a href=""><i class='far fa-comments'></i> Mensagens</a>
+        </div>
+        <div class="divlink">
+            <%= link_to "<i class='fas fa-user-edit'></i> Minhas Equipes".html_safe, teams_path(), class: 'nav-link' %>
+        </div>
+        <div class="divlink">
+            <%= link_to "<i class='fas fa-cog'></i> Minha Conta".html_safe, user_path(current_user), class: "nav-link" %>
+        </div>
+    </div>
+</nav>
