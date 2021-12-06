@@ -1,7 +1,23 @@
-<h1> MINHAS EQUIPES </h1>
+<main>
+    <div class="section-padrao">
+        <h2 class="subtitulo">Equipes</h2>
+        <% @teams.each do |team| -%>
+            <div class="container-padrao container-equipes">
+                <i class="far fa-file-image holder-img"></i>
+                <ul class="dados-equipe">
+                    <li class="nomeequipe"><%= team.name %></li>
+                    <li class="eloequipe">Elo</li>
+                    <li class="qtdjogadores">x jogadores</li>
+                    <button class='btn btn-primary botao-editar'>Editar</button>
+                </ul>
+            </div>
+        <% end -%>
+        <div class="container-padrao nova-equipe">
+            <i class="fas fa-user-plus"></i>
+            <%= link_to "Nova Equipe", new_team_url(), class: 'btn btn-primary' %>
+        </div>
+    </div>
+</main>
 
-<% @teams.each do |team| -%>
-    <p>
-        <%= team.name %>
-    </p>
-<% end -%>
+
+<%= render "components/menu" %>
