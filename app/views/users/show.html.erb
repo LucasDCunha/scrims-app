@@ -1,15 +1,14 @@
-
 <main>
-<p class="mt-3">
-<%= @user.email %>
-</p>
-<%= link_to "<button class='btn btn-primary'>Voltar</button>".html_safe, root_path%>
+<h2 class="subtitulo">Minha Conta</h2>
+<ul class="dados-conta">
+    <li>Nome:</li>
+    <li>
+        Email: <%= @user.email %>
+        <%= link_to "<i class='fas fa-pen'></i>".html_safe, edit_user_path(@user)%>
+    </li>
+</ul>
 
-<%= link_to "Edit", edit_user_path(@user), class: 'btn btn-lg mt-3 custom-btn-primary' %>
-
-<%= link_to "Minhas equipes", teams_path(), class: 'btn btn-lg mt-3 custom-btn-primary' %>
-
-<%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+<%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
 </main>
 
 <%= render "components/menu" %>
