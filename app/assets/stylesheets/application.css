@@ -98,6 +98,12 @@ main {
     display: inline-block;
 }
 
+ul {
+    list-style-type: none;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
 .container-padrao li {
     display: block;
     font-size: 2em;
@@ -138,4 +144,59 @@ main {
     height: 100%;
     font-size: 2em;
     margin: auto 0;
+}
+
+.dados-conta {
+    font-size: 2em;
+    margin: 2em;
+}
+
+.dados-conta li {
+    padding: 0.5em;
+}
+
+.titulo {
+    font-size: 4em;
+    text-align: center;
+    padding-top: 0.5em;
+}
+
+.div-form {
+    margin: auto;
+    width: 60%;
+    font-size: 2em;
+
+    padding-top: 1em;
+}
+
+.login-dados input {
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: #182422;
+    color: white;
+    padding-left: 0.5em;
+    width: 100%;
+}
+
+.login-dados label {
+    padding-top: 1em;
+}
+
+.pos-form {
+    padding-top: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pos-form div {
+    display: inline-block;
+}
+
+.botao-login {
+    margin-left: 1em;
+}
+
+.container-cadastre {
+    text-align: center;
+    padding-top: 2em;
 }
