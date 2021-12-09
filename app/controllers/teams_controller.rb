@@ -2,7 +2,18 @@ class TeamsController < ApplicationController
     before_action :set_team, only: [:show, :edit, :destroy]
     
     def index
-        @teams = Team.all.select {|t|t.user == current_user}
+        @teams = Team.all.select { |t|
+            t.user == current_user
+        }
+
+        @elos = {
+            1 => 'IRON', 2 => 'BRONZE', 3 => 'SILVER', 4 => 'GOLD', 5 => 'PLATINUM',
+            6 => 'DIAMOND', 7 => 'MASTER', 8 => 'GRANDMASTER', 9 => 'CHALLENGER'
+        }
+    end
+
+    def search_team
+        @teams = Team.all
     end
 
     def show

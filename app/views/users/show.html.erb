@@ -8,6 +8,9 @@
     </li>
 </ul>
 
+<%= link_to "<p>Mudar minha senha</p>".html_safe, edit_user_password_path(@user) %>
+
+
 <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
 </main>
 

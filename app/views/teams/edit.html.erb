@@ -24,6 +24,9 @@
 
 
 <%= link_to "<button class='btn btn-primary'>Voltar</button>".html_safe, teams_path()%>
+
+<%= link_to "EXCLUIR EQUIPE", team_path(@team), method: :delete, class: "btn btn-primary" %>
+
 </main>
 
 

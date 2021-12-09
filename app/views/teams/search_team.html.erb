@@ -1,0 +1,14 @@
+<div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+  </div>
+  <input type="text" class="form-control" id="teamInput" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+</div>
+
+<% @teams.each do |team| -%>
+    <div class="container-padrao container-equipes">
+        <ul class="dados-equipe">
+        <li class="teamOutputs"><%= team.name %></li>
+        </ul>
+    </div>
+<% end -%>
