@@ -3,7 +3,6 @@ class ScrimsController < ApplicationController
 
     def index
         @teams = Team.all.select {|t|t.user == current_user}
-        
     end
     
     def create

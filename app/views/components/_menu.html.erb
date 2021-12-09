@@ -9,12 +9,12 @@
         <h2>Base de Scrim Integrada</h2>
     </div>
     <div class="divnav">
-        <div class="divlink active">
+        <div class="divlink">
         
             <%= link_to "<i class='fas fa-home'></i> Home".html_safe, root_path() %>
         </div>
         <div class="divlink">
-            <a href=""><i class='fas fa-users'></i> Equipes</a>
+            <%= link_to "<i class='fas fa-users'></i> Equipes".html_safe, search_team_path() %>
         </div>
         <div class="divlink">
             <%= link_to "<i class='fa fa-calendar'></i> Minhas Scrims".html_safe, scrims_path() %>

@@ -1,29 +1,38 @@
 <main>
 <h2 class="subtitulo">Editar Equipe</h2>
 
-<%= simple_form_for @team do |f| %>
-    <%= f.input :name %>
-    <%= f.button :submit, 'Save', class: 'btn btn-lg mt-3 mb-2 back-btn' %>
-<% end %>
+<div class="dados-editar-equipe">
+    <%= simple_form_for @team do |f| %>
+        <%= f.input :name, :label => 'Novo nome:' %>
+        <%= f.button :submit, 'Salvar', class: 'btn btn-lg mt-3 mb-2 back-btn' %>
+    <% end %>
+</div>
+<h2 class="subtitulo">Jogadores</h2>
+<div class="dados-editar-equipe">
+    <% @players.each do |player| -%>
+        <ul class="lista-jogadores">
+            <li class="nomeequipe"><%= player.name %> - <%= player.level%> <%= link_to "(Remover)", player_path(player),
+                                                method: :delete,
+                                                data: { confirm: "Tem certeza?" } %></li>
+        </ul>
+    <% end -%>
+</div>
 
-<% @players.each do |player| -%>
-    <ul class="dados-equipe">
-        <li class="nomeequipe"><%= player.name %><%= link_to "(Delete)", player_path(player),
-                                              method: :delete,
-                                              data: { confirm: "Tem certeza?" } %></li>
-    </ul>
-<% end -%>
+<h2 class="subtitulo">Adicionar Jogadores</h2>
 
-<h2 class="subtitulo">ADD PLAYER</h2>
+<div class="dados-editar-equipe">
+    <%= simple_form_for @player do |f| %>
+        <%= f.input :name, :label => 'Nickname: ' %>
+        <%= f.input :team_id, as: :hidden, input_html: { value: @team.id } %>
+        <%= f.button :submit, 'Adicionar', class: 'btn btn-lg mt-3 mb-2 back-btn' %>
+    <% end %>
+</div>
 
-<%= simple_form_for @player do |f| %>
-    <%= f.input :name %>
-    <%= f.input :team_id, as: :hidden, input_html: { value: @team.id } %>
-    <%= f.button :submit, 'Save', class: 'btn btn-lg mt-3 mb-2 back-btn' %>
-<% end %>
+<div class="botoes-editar-equipe">
+    <%= link_to "Voltar", teams_path(), class: "btn btn-primary"%>
 
-
-<%= link_to "<button class='btn btn-primary'>Voltar</button>".html_safe, teams_path()%>
+    <%= link_to "EXCLUIR EQUIPE", team_path(@team), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-primary" %>
+</div>
 </main>
 
 
