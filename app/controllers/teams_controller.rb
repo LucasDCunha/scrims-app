@@ -9,6 +9,8 @@ class TeamsController < ApplicationController
     end
 
     def edit
+        @players = Player.all.select {|t|t.team == @team}
+        @player = Player.new
     end
 
     def new
@@ -17,12 +19,13 @@ class TeamsController < ApplicationController
     
     def create
         @team = Team.new(team_params)
-        @team.user = User.find(1)
+        @team.user = current_user
+        @team.number_off_athletes = 0
         if @team.save
             redirect_to root_path()
-          else
+        else
             render :new
-          end
+        end
     end
 
     def update
@@ -35,7 +38,7 @@ class TeamsController < ApplicationController
     
     def destroy
         @team.destroy
-        redirect_to root_path
+        redirect_to root_path()
     end
 
     private

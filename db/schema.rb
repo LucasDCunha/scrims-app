@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_03_224222) do
+ActiveRecord::Schema.define(version: 2021_12_08_005209) do
 
   create_table "chat_room_teams", force: :cascade do |t|
-    t.integer "teams_id"
-    t.integer "chat_rooms_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["chat_rooms_id"], name: "index_chat_room_teams_on_chat_rooms_id"
-    t.index ["teams_id"], name: "index_chat_room_teams_on_teams_id"
+    t.integer "chat_room_id"
+    t.integer "team_id"
+    t.index ["chat_room_id"], name: "index_chat_room_teams_on_chat_room_id"
+    t.index ["team_id"], name: "index_chat_room_teams_on_team_id"
   end
 
   create_table "chat_rooms", force: :cascade do |t|
@@ -27,24 +27,24 @@ ActiveRecord::Schema.define(version: 2021_12_03_224222) do
   end
 
   create_table "evaluations", force: :cascade do |t|
-    t.integer "teams_id"
-    t.integer "scrims_id"
     t.integer "grade"
     t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["scrims_id"], name: "index_evaluations_on_scrims_id"
-    t.index ["teams_id"], name: "index_evaluations_on_teams_id"
+    t.integer "team_id"
+    t.integer "scrim_id"
+    t.index ["scrim_id"], name: "index_evaluations_on_scrim_id"
+    t.index ["team_id"], name: "index_evaluations_on_team_id"
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "users_id"
-    t.integer "teams_id"
     t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["teams_id"], name: "index_favorites_on_teams_id"
-    t.index ["users_id"], name: "index_favorites_on_users_id"
+    t.integer "team_id"
+    t.integer "user_id"
+    t.index ["team_id"], name: "index_favorites_on_team_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -54,18 +54,20 @@ ActiveRecord::Schema.define(version: 2021_12_03_224222) do
     t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "chat_room_id"
     t.integer "team_id"
+    t.integer "chat_room_id"
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["team_id"], name: "index_messages_on_team_id"
   end
 
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.integer "level"
     t.boolean "active"
-    t.integer "teams_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["teams_id"], name: "index_players_on_teams_id"
+    t.integer "team_id"
+    t.index ["team_id"], name: "index_players_on_team_id"
   end
 
   create_table "scrims", force: :cascade do |t|
@@ -78,12 +80,12 @@ ActiveRecord::Schema.define(version: 2021_12_03_224222) do
   end
 
   create_table "team_scrims", force: :cascade do |t|
-    t.integer "teams_id"
-    t.integer "scrims_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["scrims_id"], name: "index_team_scrims_on_scrims_id"
-    t.index ["teams_id"], name: "index_team_scrims_on_teams_id"
+    t.integer "team_id"
+    t.integer "scrim_id"
+    t.index ["scrim_id"], name: "index_team_scrims_on_scrim_id"
+    t.index ["team_id"], name: "index_team_scrims_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -113,13 +115,4 @@ ActiveRecord::Schema.define(version: 2021_12_03_224222) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "chat_room_teams", "chat_rooms", column: "chat_rooms_id"
-  add_foreign_key "chat_room_teams", "teams", column: "teams_id"
-  add_foreign_key "favorites", "teams", column: "teams_id"
-  add_foreign_key "favorites", "users", column: "users_id"
-  add_foreign_key "messages", "chat_rooms"
-  add_foreign_key "messages", "teams"
-  add_foreign_key "players", "teams", column: "teams_id"
-  add_foreign_key "team_scrims", "scrims", column: "scrims_id"
-  add_foreign_key "team_scrims", "teams", column: "teams_id"
 end
