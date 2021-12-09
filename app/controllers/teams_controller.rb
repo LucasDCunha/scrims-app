@@ -7,8 +7,8 @@ class TeamsController < ApplicationController
         }
 
         @elos = {
-            1 => 'IRON', 2 => 'BRONZE', 3 => 'SILVER', 4 => 'GOLD', 5 => 'PLATINUM',
-            6 => 'DIAMOND', 7 => 'MASTER', 8 => 'GRANDMASTER', 9 => 'CHALLENGER'
+            1 => 'FERRO', 2 => 'BRONZE', 3 => 'PRATA', 4 => 'OURO', 5 => 'PLATINA',
+            6 => 'DIAMANTE', 7 => 'MESTRE', 8 => 'GRÃO-MESTRE', 9 => 'DESAFIANTE'
         }
     end
 
@@ -65,5 +65,4 @@ class TeamsController < ApplicationController
     def filter_teams
 
     end
-
 end

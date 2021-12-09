@@ -17,7 +17,7 @@ window.onload=function(){
         teamInput.addEventListener('keydown', update)
         
         function update(e) {
-            teamOutputsDivs = document.querySelectorAll('div.container-padrao.container-equipes');
+            teamOutputsDivs = document.querySelectorAll('div.container-padrao.container-equipes.container-busca-equipes');
             teamOutputsLis = document.querySelectorAll('li');
             var index = 0;
             teamOutputsLis.forEach(li => {

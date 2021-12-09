@@ -1,7 +1,6 @@
 <main>
 <h2 class="subtitulo">Minha Conta</h2>
 <ul class="dados-conta">
-    <li>Nome:</li>
     <li>
         Email: <%= @user.email %>
         <%= link_to "<i class='fas fa-pen'></i>".html_safe, edit_user_path(@user)%>
