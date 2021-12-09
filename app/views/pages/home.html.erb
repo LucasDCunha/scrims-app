@@ -13,42 +13,22 @@
         <div id="div-h2-busca">
             <h2>Buscar Scrim</h2>
         </div>
-        <form action="">
-            <select name="selectequipe" class="selectbusca" id="selectequipe">
-                <option value="1">Equipe X</option>
-                <option value="2">Equipe Y</option>
-            </select>
-            <div class="flex">
-                <div class="flexdivbusca">
-                    <div>
-                        <label for="selectelo">Elo Mínimo</label>
-                    </div>
-                    <select name="selectelo" class="selectbusca" id="selectelo">
-                        <option value="1">Bronze</option>
-                        <option value="2">Prata</option>
-                        <option value="3">Ouro</option>
-                        <option value="4">Platina</option>
-                        <option value="5">Diamante</option>
-                        <option value="6">Mestre</option>
-                        <option value="7">Grão-Mestre</option>
-                        <option value="8">Desafiante</option>
-                    </select>
-                </div>
-                <div class="flexdivbusca">
-                    <div>
-                        <label for="selectnota" id="labelnota">Nota Mínima</label>
-                    </div>
-                    <input type="number" id="selectnota" name="selectnota" class="selectbusca" min="0" max="5">
-                </div>
-                <div class="flexdivbusca">
-                    <div>
-                        <label for="datahorabusca" id="labeldata">Data e Hora</label>
-                    </div>
-                    <input type="datetime-local" name="datahorabusca" id="datahorabusca" class="selectbusca">
-                </div>
-            </div>
-            <button type="submit" class="botao-form" id="botao-busca">Buscar</button>
-        </form>
+
+        <label for="teams">Escolha a equipe:</label>
+
+        <select name="team" id="teamSelector">
+        <% @teams.each do |team| -%>
+            <option value="<%=team.id%>"><%=team.name%></option>          
+        <% end -%>
+        </select>
+ 
+        <%= simple_form_for @scrim do |f| %>
+            <%= f.input :team, as: :hidden, input_html: { value: @team } %>
+            <%= f.input :level , collection: 1..9 %>
+            <%= f.input :date, as: :date, html5: true%>
+            <%= f.input :time, as: :time, html5: true%>
+            <%= f.button :submit, 'buscar scrim', class: 'btn btn-lg mt-3 mb-2 back-btn' %>
+        <% end %>
     </div>
 </main>
 

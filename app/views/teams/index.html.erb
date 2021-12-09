@@ -7,8 +7,8 @@
                 <ul class="dados-equipe">
                     <li class="nomeequipe"><%= team.name %></li>
                     <li class="eloequipe">Elo</li>
-                    <li class="qtdjogadores">x jogadores</li>
-                    <button class='btn btn-primary botao-editar'>Editar</button>
+                    <li class="qtdjogadores"><%= team.players.count%> jogadores</li> 
+                    <%= link_to "Editar", edit_team_url(team), class: 'btn btn-primary botao-editar' %>
                 </ul>
             </div>
         <% end -%>
