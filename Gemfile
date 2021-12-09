@@ -60,3 +60,5 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 gem 'devise'
 gem 'simple_form'
+gem 'rest-client'
+gem 'dotenv'

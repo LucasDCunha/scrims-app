@@ -1,0 +1,12 @@
+<div class="container">
+    <h1>MINHAS SCRIMS</h1>
+    <% @teams.each do |team| -%>
+        <% team.team_scrims.each do |team_scrim| -%>
+            <% if team_scrim.scrim.team_scrim_ids.count == 2 -%>
+                <p> <%= team_scrim.scrim.team_scrims[0].team.name %> </p>
+                <p>vs</p>
+                <p> <%= team_scrim.scrim.team_scrims[1].team.name %> </p>
+            <% end -%>
+        <% end -%>
+    <% end -%>
+</div>

@@ -1,7 +1,35 @@
-<h1>teste</h1>
+<main>
+    <div class="section-padrao">
+        <h2 class="subtitulo">Próximo Treino</h2>
+        <div class="container-padrao container-treino-home">
+            <i class="far fa-file-image holder-img"></i>
+            <ul id="dados-treino">
+                <li id="nome-adv">Time X</li>
+                <li id="data-adv">01/07/2019 20:00</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-busca container-padrao">
+        <div id="div-h2-busca">
+            <h2>Buscar Scrim</h2>
+        </div>
+
+        <label for="teams">Escolha a equipe:</label>
+
+        <select name="team" id="teamSelector">
+        <% @teams.each do |team| -%>
+            <option value="<%=team.id%>"><%=team.name%></option>          
+        <% end -%>
+        </select>
+ 
+        <%= simple_form_for @scrim do |f| %>
+            <%= f.input :team, as: :hidden, input_html: { value: @team } %>
+            <%= f.input :level , collection: 1..9 %>
+            <%= f.input :date, as: :date, html5: true%>
+            <%= f.input :time, as: :time, html5: true%>
+            <%= f.button :submit, 'buscar scrim', class: 'btn btn-lg mt-3 mb-2 back-btn' %>
+        <% end %>
+    </div>
+</main>
 
 <%= render "components/menu" %>
-
-<%= link_to "Profile", user_path(current_user), class: "nav-link" %>
-
-<%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
