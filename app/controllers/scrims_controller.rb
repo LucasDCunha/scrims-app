@@ -3,13 +3,13 @@ class ScrimsController < ApplicationController
 
     def index
         @teams = Team.all.select {|t|t.user == current_user}
-        
     end
     
     def create
         team_scrim_controller = TeamScrimsController.new
         @scrim = Scrim.new(scrim_params)
-        if buscar_scrim()
+        team_id = params[:scrim][:team].to_i
+        if buscar_scrim(team_id)
             if @scrim.save
                 team_scrim_controller.create(scrim: @scrim.id, team: params["scrim"]["team"])
                 redirect_to root_path()
@@ -36,12 +36,18 @@ class ScrimsController < ApplicationController
         params.require(:scrim).permit(:date, :time, :level)
     end
 
-    def buscar_scrim
+    def buscar_scrim(team_id)
         team_scrim_controller = TeamScrimsController.new
         @scrims = Scrim.all
         scrim_ideal = @scrims.select {|s| s.date == @scrim.date && s.time == @scrim.time && s.level == @scrim.level}
         if scrim_ideal.count > 0
-            team_scrim_controller.create(scrim: scrim_ideal[0].id, team: params["scrim"]["team"])
+            scrim_ideal.each_with_index do |scrim, index|
+                if scrim.team_scrims.count < 2
+                    team_scrim_controller.create(scrim: scrim_ideal[index].id, team: team_id)
+                else
+                    return true
+                end
+            end
             return false
         else
             return true

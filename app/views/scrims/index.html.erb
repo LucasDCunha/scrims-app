@@ -1,12 +1,21 @@
-<div class="container">
-    <h1>MINHAS SCRIMS</h1>
+<main>
+    <h2 class="subtitulo">Próximas Scrims</h2>
     <% @teams.each do |team| -%>
         <% team.team_scrims.each do |team_scrim| -%>
             <% if team_scrim.scrim.team_scrim_ids.count == 2 -%>
-                <p> <%= team_scrim.scrim.team_scrims[0].team.name %> </p>
-                <p>vs</p>
-                <p> <%= team_scrim.scrim.team_scrims[1].team.name %> </p>
+            <div class="container-padrao container-equipes container-busca-equipes">
+                <ul class="times-scrim">
+                    <li> <%= team_scrim.scrim.team_scrims[0].team.name %></li>
+                    <li>vs</li>
+                    <li> <%= team_scrim.scrim.team_scrims[1].team.name %></li>
+                    <li> <%= team_scrim.scrim.date %></li>
+                    <li> <%= team_scrim.scrim.time.strftime("%H:%M") %></li>
+                    <li><%= link_to "Enviar Mensagem", "", class: 'btn btn-primary' %></li>
+                </ul>
+            </div>
             <% end -%>
         <% end -%>
     <% end -%>
-</div>
+</main>
+
+<%= render "components/menu" %>

@@ -1,12 +1,14 @@
 <main>
 <h2 class="subtitulo">Minha Conta</h2>
 <ul class="dados-conta">
-    <li>Nome:</li>
     <li>
         Email: <%= @user.email %>
         <%= link_to "<i class='fas fa-pen'></i>".html_safe, edit_user_path(@user)%>
     </li>
 </ul>
+
+<%= link_to "<p>Mudar minha senha</p>".html_safe, edit_user_registration_path(current_user) %>
+
 
 <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
 </main>

@@ -23,11 +23,11 @@
         </select>
  
         <%= simple_form_for @scrim do |f| %>
-            <%= f.input :team, as: :hidden, input_html: { value: @team } %>
-            <%= f.input :level , collection: 1..9 %>
-            <%= f.input :date, as: :date, html5: true%>
-            <%= f.input :time, as: :time, html5: true%>
-            <%= f.button :submit, 'buscar scrim', class: 'btn btn-lg mt-3 mb-2 back-btn' %>
+            <%= f.input :team, as: :hidden, input_html: { value: @teams[0].id } %>
+            <%= f.input :level, :label => 'Elo:', collection: @elos %>
+            <%= f.input :date, :label => 'Data:', as: :date, html5: true%>
+            <%= f.input :time, :label => 'Hora:', as: :time, html5: true%>
+            <%= f.button :submit, 'Buscar Scrim', class: 'btn btn-primary botao-busca' %>
         <% end %>
     </div>
 </main>

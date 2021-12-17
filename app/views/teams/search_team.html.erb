@@ -1,0 +1,21 @@
+<main>
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Buscar</span>
+    </div>
+    <input type="text" class="form-control" id="teamInput" aria-label="Buscar" aria-describedby="inputGroup-sizing-sm">
+  </div>
+
+  <% @teams.each do |team| -%>
+      <div class="container-padrao container-equipes container-busca-equipes">
+          <ul class="dados-equipe">
+          <li class="teamOutputs"><%= team.name %></li>
+          <%= link_to "Solicitar Scrim", "", class: 'btn btn-primary' %>
+          <%= link_to "Denunciar", "", class: 'btn btn-primary' %>
+          </ul>
+      </div>
+  <% end -%>
+</main>
+
+
+<%= render "components/menu" %>
