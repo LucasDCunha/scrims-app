@@ -7,7 +7,7 @@
                 <ul class="dados-equipe">
                     <li class="nomeequipe"><%= team.name %></li>
                     <%if team.players.count > 0 -%>
-                        <li class="eloequipe">Elo <%= @elos[team.players.sort_by { |h| h[:level] * 1 }[0].level]%></li>
+                        <li class="eloequipe">Elo <%= @elos[team.players.sort_by { |h| h[:level] * 1 if h[:level] != nil }[0].level]%></li>
                     <%end-%>
                     <li class="qtdjogadores"><%= team.players.count%> jogadores</li> 
                     <%= link_to "Editar", edit_team_url(team), class: 'btn btn-primary botao-editar' %>

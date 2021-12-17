@@ -9,6 +9,7 @@
                     <li>vs</li>
                     <li> <%= team_scrim.scrim.team_scrims[1].team.name %></li>
                     <li> <%= team_scrim.scrim.date %></li>
+                    <li> <%= team_scrim.scrim.time.strftime("%H:%M") %></li>
                     <li><%= link_to "Enviar Mensagem", "", class: 'btn btn-primary' %></li>
                 </ul>
             </div>

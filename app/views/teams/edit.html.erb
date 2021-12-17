@@ -7,11 +7,12 @@
         <%= f.button :submit, 'Salvar', class: 'btn btn-lg mt-3 mb-2 back-btn' %>
     <% end %>
 </div>
+
 <h2 class="subtitulo">Jogadores</h2>
 <div class="dados-editar-equipe">
     <% @players.each do |player| -%>
         <ul class="lista-jogadores">
-            <li class="nomeequipe"><%= player.name %> - <%= player.level%> <%= link_to "(Remover)", player_path(player),
+            <li class="nomeequipe"><%= player.name %> - <%= @elos[player.level]%> <%= link_to "(Remover)", player_path(player),
                                                 method: :delete,
                                                 data: { confirm: "Tem certeza?" } %></li>
         </ul>
