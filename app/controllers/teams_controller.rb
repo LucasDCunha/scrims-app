@@ -16,6 +16,8 @@ class TeamsController < ApplicationController
 
     def search_team
         @teams = Team.all
+        @favorite = Favorite.new()
+        @favorites = Favorite.all.select {|t|t.user == current_user}
     end
 
     def show
