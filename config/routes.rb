@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :players
   resources :scrims
   resources :team_scrims
+  resources :favorites
 end

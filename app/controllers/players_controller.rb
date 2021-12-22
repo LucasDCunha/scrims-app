@@ -60,7 +60,10 @@ class PlayersController < ApplicationController
         r =  RestClient.get "https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/#{JSON.parse(r.body)["id"]}?api_key=RGAPI-aedd82c5-fcc1-476a-9e61-486ba5fbec19",
         {content_type: :json, accept: :json}
         body = JSON.parse(r.body)
-        
+        if body == []
+            player.level = 0
+            return player
+        end
         set_player_level(body) != nil ? player.level = set_player_level(body) : player.level = 0
             
         return player

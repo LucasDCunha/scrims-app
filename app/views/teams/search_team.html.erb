@@ -9,12 +9,30 @@
   <% @teams.each do |team| -%>
       <div class="container-padrao container-equipes container-busca-equipes">
           <ul class="dados-equipe">
-          <li class="teamOutputs"><%= team.name %></li>
-          <%= link_to "Solicitar Scrim", "", class: 'btn btn-primary' %>
-          <%= link_to "Denunciar", "", class: 'btn btn-primary' %>
+            <li class="teamOutputs"><%= team.name %></li>
+            <%= link_to "Solicitar Scrim", "", class: 'btn btn-primary' %>
+            <%= link_to "Denunciar", "", class: 'btn btn-primary' %>
+            <%= simple_form_for @favorite do |f| %>
+              <%= f.input :team, as: :hidden, input_html: { value: team.id } %>
+              <%= f.button :submit, 'favoritar equipe', class: 'btn btn-primary mb-3' %>
+            <% end %>
           </ul>
       </div>
   <% end -%>
+
+  <div>
+  <h2>EQUIPES FAVORITADAS</h2>
+    <% @favorites.each do |favorite| -%>
+        <div class="container-padrao container-equipes container-busca-equipes">
+            <ul class="dados-equipe">
+              <li class="teamOutputs"><%= favorite.team.name %></li>
+              <%= link_to "Remover dos favoritos", favorite_path(favorite),
+                                                method: :delete, class: "btn btn-primary",
+                                                data: { confirm: "Tem certeza?" } %></li>
+            </ul>
+        </div>
+    <% end -%>
+    </div>
 </main>
 
 
