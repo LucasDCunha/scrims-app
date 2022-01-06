@@ -3,11 +3,10 @@
 <ul class="dados-conta">
     <li>
         Email: <%= @user.email %>
-        <%= link_to "<i class='fas fa-pen'></i>".html_safe, edit_user_path(@user)%>
     </li>
 </ul>
 
-<%= link_to "<p>Mudar minha senha</p>".html_safe, edit_user_password_path(@user) %>
+<%= link_to "<p>Mudar meus dados</p>".html_safe, edit_user_registration_path(current_user) %>
 
 
 <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>

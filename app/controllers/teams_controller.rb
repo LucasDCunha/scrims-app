@@ -1,19 +1,32 @@
 class TeamsController < ApplicationController
-    before_action :set_team, only: [:show, :edit, :destroy]
+    before_action :set_team, only: [:show, :edit, :destroy, :update]
+
+    ELOS = {
+        0 => 'Sem elo',
+        1 => 'FERRO', 2 => 'BRONZE', 3 => 'PRATA', 4 => 'OURO', 5 => 'PLATINA',
+        6 => 'DIAMANTE', 7 => 'MESTRE', 8 => 'GRÃO-MESTRE', 9 => 'DESAFIANTE'
+    }
     
     def index
         @teams = Team.all.select { |t|
             t.user == current_user
         }
-
-        @elos = {
-            1 => 'FERRO', 2 => 'BRONZE', 3 => 'PRATA', 4 => 'OURO', 5 => 'PLATINA',
-            6 => 'DIAMANTE', 7 => 'MESTRE', 8 => 'GRÃO-MESTRE', 9 => 'DESAFIANTE'
+        @elos = ELOS
+        @invites = Invite.all.select { |t|
+            t.invite_teams[0].team.user == current_user if t.invite_teams != []
         }
+        @invite = Invite.new()
     end
 
     def search_team
         @teams = Team.all
+        @favorite = Favorite.new()
+        @favorites = Favorite.all.select {|t|t.user == current_user}
+        @invite = Invite.new()
+        @my_teams = Team.all.select { |t|
+            t.user == current_user
+        }
+        @other_teams = @teams - @my_teams
     end
 
     def show
@@ -22,6 +35,7 @@ class TeamsController < ApplicationController
     def edit
         @players = Player.all.select {|t|t.team == @team}
         @player = Player.new
+        @elos = ELOS
     end
 
     def new
@@ -40,8 +54,9 @@ class TeamsController < ApplicationController
     end
 
     def update
+        p @team
         if @team.update(team_params)
-          redirect_to team_path(params[:id])
+          redirect_to teams_path()
         else
           render :edit
         end

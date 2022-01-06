@@ -13,8 +13,9 @@ class PlayersController < ApplicationController
         @player = Player.new(player_params)
         @team = Team.find(params[:player][:team_id].to_i)
         @player.team = @team
+        return redirect_to edit_team_path(@team) if find_player(@player) == nil
         if find_player(@player).save
-            redirect_to root_path()
+            redirect_to edit_team_path(@team)
           else
             render :new
           end
@@ -24,16 +25,18 @@ class PlayersController < ApplicationController
     end
 
     def update
+        @team = @player.team
         if @player.update(player_params)
-            redirect_to root_path()
+            redirect_to edit_team_path(@team)
           else
             render :edit
           end
     end
 
     def destroy
+        @team = @player.team
         @player.destroy
-        redirect_to root_path()
+        redirect_to edit_team_path(@team)
     end
 
     private
@@ -48,19 +51,22 @@ class PlayersController < ApplicationController
 
     def find_player(player)
         player = player
-        if RestClient.get "https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/#{player.name}?api_key=RGAPI-aedd82c5-fcc1-476a-9e61-486ba5fbec19"
-            @response =  RestClient.get "https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/#{player.name}?api_key=RGAPI-aedd82c5-fcc1-476a-9e61-486ba5fbec19",
+        begin
+            r =  RestClient.get "https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/#{player.name}?api_key=RGAPI-aedd82c5-fcc1-476a-9e61-486ba5fbec19",
             {content_type: :json, accept: :json}
-            @response =  RestClient.get "https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/#{JSON.parse(@response.body)["id"]}?api_key=RGAPI-aedd82c5-fcc1-476a-9e61-486ba5fbec19",
-            {content_type: :json, accept: :json}
-            body = JSON.parse(@response.body)
-            
-            player.level = set_player_level(body)
-            
-            return player
-        else
+        rescue => exception
             return nil
         end
+        r =  RestClient.get "https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/#{JSON.parse(r.body)["id"]}?api_key=RGAPI-aedd82c5-fcc1-476a-9e61-486ba5fbec19",
+        {content_type: :json, accept: :json}
+        body = JSON.parse(r.body)
+        if body == []
+            player.level = 0
+            return player
+        end
+        set_player_level(body) != nil ? player.level = set_player_level(body) : player.level = 0
+            
+        return player
     end
 
     def set_player_level(body)

@@ -23,7 +23,7 @@
         </select>
  
         <%= simple_form_for @scrim do |f| %>
-            <%= f.input :team, as: :hidden, input_html: { value: @team } %>
+            <%= f.input :team, as: :hidden, input_html: { value: @teams[0].id } %>
             <%= f.input :level, :label => 'Elo:', collection: @elos %>
             <%= f.input :date, :label => 'Data:', as: :date, html5: true%>
             <%= f.input :time, :label => 'Hora:', as: :time, html5: true%>

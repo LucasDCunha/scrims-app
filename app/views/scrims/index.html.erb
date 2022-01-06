@@ -9,7 +9,12 @@
                     <li>vs</li>
                     <li> <%= team_scrim.scrim.team_scrims[1].team.name %></li>
                     <li> <%= team_scrim.scrim.date %></li>
+                    <li> <%= team_scrim.scrim.time.strftime("%H:%M") %></li>
                     <li><%= link_to "Enviar Mensagem", "", class: 'btn btn-primary' %></li>
+                    <% 
+                        msg = "Ola, temos uma scrim marcada as #{team_scrim.scrim.time.strftime("%H:%M")}, do dia #{team_scrim.scrim.date}, contra: #{team_scrim.scrim.team_scrims[1].team.name}"
+                    -%>
+                    <li><a class="btn btn-primary" href="whatsapp://send?text=<%= msg %>">Compatilhar essa scrim</a></li>
                 </ul>
             </div>
             <% end -%>
