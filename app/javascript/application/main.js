@@ -1,4 +1,6 @@
 window.onload=function(){
+
+    // HOME DROPDOWN
     if(document.getElementById("teamSelector")) {
 
         teamSelector = document.getElementById("teamSelector");
@@ -11,6 +13,7 @@ window.onload=function(){
         }
     }
 
+    // SEARCH BAR
     if(document.getElementById("teamInput")) {
         teamInput = document.getElementById("teamInput")
         
@@ -29,6 +32,34 @@ window.onload=function(){
                 }
                 index++;
             });
+        }
+    }
+
+    // SEARCH DROPDOWN ENEMY
+    if(document.getElementById("enemySelector")) {
+
+        enemySelector = document.getElementById("enemySelector");
+        
+        enemySelector.addEventListener('change', update)
+        
+        function update(e) {
+            team1 = document.getElementById("invite_team1");
+            team1.value = enemySelector.value;
+            console.log(team1.value);
+        }
+    }
+
+    //SEARCH DROPDOWN MY TEAM
+    if(document.getElementById("myTeamSelector")) {
+
+        myTeamSelector = document.getElementById("myTeamSelector");
+        
+        myTeamSelector.addEventListener('change', update)
+        
+        function update(e) {
+            team2 = document.getElementById("invite_team2");
+            team2.value = myTeamSelector.value;
+            console.log(team2.value);
         }
     }
 }

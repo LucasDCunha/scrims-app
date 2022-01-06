@@ -21,7 +21,7 @@
   <% end -%>
 
   <div>
-  <h2>EQUIPES FAVORITADAS</h2>
+    <h2>EQUIPES FAVORITADAS</h2>
     <% @favorites.each do |favorite| -%>
         <div class="container-padrao container-equipes container-busca-equipes">
             <ul class="dados-equipe">
@@ -32,6 +32,35 @@
             </ul>
         </div>
     <% end -%>
+    </div>
+
+    <div>
+      <h2>Solicitar Scrim</h2>
+      <div class="container-padrao p-3">
+        <label for="teams">Escolha a equipe contra:</label>
+
+        <select name="team" id="enemySelector">
+          <% @other_teams.each do |team| -%>
+              <option value="<%=team.id%>"><%=team.name%></option>          
+          <% end -%>
+        </select>
+        <br>
+        <label for="teams">Escolha a sua equipe:</label>
+
+        <select name="team" id="myTeamSelector">
+          <% @my_teams.each do |team| -%>
+              <option value="<%=team.id%>"><%=team.name%></option>          
+          <% end -%>
+        </select>
+
+        <%= simple_form_for @invite do |f| %>
+            <%= f.input :team1, as: :hidden, input_html: { value: @other_teams[0].id } %>
+            <%= f.input :team2, as: :hidden, input_html: { value: @my_teams[0].id } %>
+            <%= f.input :date, :label => 'Data:', as: :date, html5: true%>
+            <%= f.input :time, :label => 'Hora:', as: :time, html5: true%>
+            <%= f.button :submit, 'Solicitar Scrim', class: 'btn btn-primary botao-busca' %>
+        <% end %>
+      </div>  
     </div>
 </main>
 

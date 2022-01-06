@@ -12,12 +12,21 @@ class TeamsController < ApplicationController
             t.user == current_user
         }
         @elos = ELOS
+        @invites = Invite.all.select { |t|
+            t.invite_teams[0].team.user == current_user if t.invite_teams != []
+        }
+        @invite = Invite.new()
     end
 
     def search_team
         @teams = Team.all
         @favorite = Favorite.new()
         @favorites = Favorite.all.select {|t|t.user == current_user}
+        @invite = Invite.new()
+        @my_teams = Team.all.select { |t|
+            t.user == current_user
+        }
+        @other_teams = @teams - @my_teams
     end
 
     def show

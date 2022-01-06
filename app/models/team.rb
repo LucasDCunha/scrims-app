@@ -7,4 +7,6 @@ class Team < ApplicationRecord
     has_many :evaluations, dependent: :destroy
     has_many :chat_room_teams, dependent: :destroy
     has_many :chat_rooms, through: :chat_room_teams
+    has_many :invites, through: :invite_teams
+    has_many :invite_teams, dependent: :destroy
 end
