@@ -67,6 +67,16 @@ class TeamsController < ApplicationController
         redirect_to root_path()
     end
 
+    def recalc_grade(enemy)
+        @team = Team.find(enemy)
+        grade = 0
+        @team.evaluations.each do |e|
+            grade += e.grade
+        end
+        @team.grade = grade/@team.evaluations.count
+        @team.save
+    end
+
     private
 
     def set_team
