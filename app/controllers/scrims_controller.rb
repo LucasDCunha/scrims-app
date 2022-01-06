@@ -6,8 +6,7 @@ class ScrimsController < ApplicationController
     end
     
     def create(invite = nil)
-        
-        create_scrim_by_invite(invite[:id]) if invite != nil
+        create_scrim_by_invite(invite) if invite != nil
 
         if invite == nil
             team_scrim_controller = TeamScrimsController.new
@@ -60,7 +59,8 @@ class ScrimsController < ApplicationController
     end
 
     def create_scrim_by_invite(invite)
-        @invite = Invite.find(invite)
+
+        @invite = Invite.find(invite.to_i)
         team_scrim_controller = TeamScrimsController.new
         @scrim = Scrim.new()
         @scrim.date = @invite.date

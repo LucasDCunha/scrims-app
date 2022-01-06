@@ -1,8 +1,9 @@
-window.onload=function(){
+window.addEventListener("wheel", function(e) {
 
+    
     // HOME DROPDOWN
     if(document.getElementById("teamSelector")) {
-
+        
         teamSelector = document.getElementById("teamSelector");
         
         teamSelector.addEventListener('change', update)
@@ -10,9 +11,10 @@ window.onload=function(){
         function update(e) {
             team = document.getElementById("scrim_team");
             team.value = teamSelector.value;
+            console.log(team.value)
         }
     }
-
+    
     // SEARCH BAR
     if(document.getElementById("teamInput")) {
         teamInput = document.getElementById("teamInput")
@@ -34,10 +36,10 @@ window.onload=function(){
             });
         }
     }
-
+    
     // SEARCH DROPDOWN ENEMY
     if(document.getElementById("enemySelector")) {
-
+        
         enemySelector = document.getElementById("enemySelector");
         
         enemySelector.addEventListener('change', update)
@@ -48,10 +50,10 @@ window.onload=function(){
             console.log(team1.value);
         }
     }
-
+    
     //SEARCH DROPDOWN MY TEAM
     if(document.getElementById("myTeamSelector")) {
-
+        
         myTeamSelector = document.getElementById("myTeamSelector");
         
         myTeamSelector.addEventListener('change', update)
@@ -62,4 +64,5 @@ window.onload=function(){
             console.log(team2.value);
         }
     }
-}
+    
+});
