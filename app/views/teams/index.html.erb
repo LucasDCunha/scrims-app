@@ -9,7 +9,8 @@
                     <%if team.players.count > 0 -%>
                         <li class="eloequipe">Elo <%= @elos[team.players.sort_by { |h| h[:level] * 1 if h[:level] != nil }[0].level]%></li>
                     <%end-%>
-                    <li class="qtdjogadores"><%= team.players.count%> jogadores</li> 
+                    <li class="qtdjogadores"><%= team.players.count%> jogadores</li>
+                    <li class="qtdjogadores">Nota: <%= team.grade != nil ? team.grade : "Sem Nota" %> </li> 
                     <%= link_to "Editar", edit_team_url(team), class: 'btn btn-primary botao-editar' %>
                 </ul>
             </div>
@@ -18,6 +19,23 @@
             <i class="fas fa-user-plus"></i>
             <%= link_to "Nova Equipe", new_team_url(), class: 'btn btn-primary' %>
         </div>
+    </div>
+
+    <div class="section-padrao">
+        <h2 class="subtitulo">Convites</h2>
+        <% @invites.each do |invite| -%>
+            <div class="container-padrao container-equipes">
+                <ul class="dados-equipe">
+                    <li class="nomeequipe"><%= invite.invite_teams[1].team.name %> X <%= invite.invite_teams[0].team.name %></li>
+                    <li class="qtdjogadores"><%= invite.date%> </li>
+                    <li class="qtdjogadores"><%= invite.time.strftime("%H:%M")%> </li>
+                    <%= simple_form_for @invite do |f| %>
+                    <%= f.input :invite, as: :hidden, input_html: { value: invite.id } %>
+                    <%= f.button :submit, 'Aceitar', class: 'btn btn-primary mb-3' %>
+        <% end %>
+                </ul>
+            </div>
+        <% end -%>
     </div>
 </main>
 

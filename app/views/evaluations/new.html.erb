@@ -1,0 +1,11 @@
+<main class="mt-5">
+<h2>Avaliando scrim contra <%= @enemy[0].team.name %> </h2>
+    <%= simple_form_for @evaluation do |f| %>
+        <%= f.input :scrim, as: :hidden, input_html: { value: @scrim.id } %>
+        <%= f.input :team, as: :hidden, input_html: { value: @enemy[0].team.id } %>
+        <%= f.input :grade, :label => 'Nota: ', collection: 0..10, default: 0 %>
+        <%= f.button :submit, 'Avaliar', class: 'btn btn-primary my-3' %>
+    <% end -%>
+</main>
+
+<%= render "components/menu" %>

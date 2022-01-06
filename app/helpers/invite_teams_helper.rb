@@ -1,0 +1,2 @@
+module InviteTeamsHelper
+end
