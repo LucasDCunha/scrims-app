@@ -18,9 +18,8 @@ class InvitesController < ApplicationController
     end
 
     def create_scrim(invite)
-        invite = Invite.find(invite.to_i)
         scrim_controller = ScrimsController.new
-        scrim_controller.create(id: invite.id)
+        scrim_controller.create(invite)
         redirect_to scrims_path()
     end
 
