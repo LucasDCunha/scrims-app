@@ -1,6 +1,13 @@
 class InvitesController < ApplicationController
     before_action :set_invite, only: [:destroy]
 
+    def index
+        @invites = Invite.all.select { |t|
+            t.invite_teams[0].team.user == current_user if t.invite_teams != []
+        }
+        @invite = Invite.new()
+    end
+
     def create
         create_scrim(params[:invite][:invite]) if params[:invite][:invite] != nil
 
@@ -24,7 +31,7 @@ class InvitesController < ApplicationController
     end
 
     def destroy(invite = nil)
-        @invite = Invite.find(invite)
+        @invite = Invite.find(params[:id])
         @invite.destroy
         redirect_to root_path() if invite == nil
     end
