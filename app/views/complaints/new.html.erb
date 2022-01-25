@@ -1,0 +1,9 @@
+<main class="pt-3">
+    <%= simple_form_for @complaint do |f| %>
+            <%= f.input :team, as: :hidden, input_html: { value: @team.id } %>
+            <%= f.input :message, :label => 'Mensagem' %>
+            <%= f.button :submit, 'Enviar', class: 'btn btn-primary botao-busca' %>
+        <% end %>
+</main>
+
+<%= render "components/menu" %>

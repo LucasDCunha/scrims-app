@@ -9,4 +9,5 @@ class Team < ApplicationRecord
     has_many :chat_rooms, through: :chat_room_teams
     has_many :invites, through: :invite_teams
     has_many :invite_teams, dependent: :destroy
+    has_many :complaints, dependent: :destroy
 end

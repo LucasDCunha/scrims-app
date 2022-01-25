@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_05_014131) do
+ActiveRecord::Schema.define(version: 2022_01_25_191741) do
 
   create_table "chat_room_teams", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2022_01_05_014131) do
   create_table "chat_rooms", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "complaints", force: :cascade do |t|
+    t.string "message"
+    t.integer "team_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_complaints_on_team_id"
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -131,6 +139,7 @@ ActiveRecord::Schema.define(version: 2022_01_05_014131) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "complaints", "teams"
   add_foreign_key "invite_teams", "invites"
   add_foreign_key "invite_teams", "teams"
 end
