@@ -9,7 +9,9 @@ class ChatRoomsController < ApplicationController
 
     def show
         @message = Message.new
-        @messages = Message.all
+        @messages = Message.all.select { |t|
+            t.chat_room.id == params[:id].to_i
+        }
     end
 
     def create(chat_room = nil)
