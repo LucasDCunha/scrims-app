@@ -1,0 +1,21 @@
+<main>    
+    <div class="section-padrao">
+        <h2 class="subtitulo">Convites</h2>
+        <% @invites.each do |invite| -%>
+            <div class="container-padrao container-equipes">
+                <ul class="dados-equipe">
+                    <li class="nomeequipe"><%= invite.invite_teams[1].team.name %> X <%= invite.invite_teams[0].team.name %></li>
+                    <li class="qtdjogadores"><%= invite.date%> </li>
+                    <li class="qtdjogadores"><%= invite.time.strftime("%H:%M")%> </li>
+                    <%= simple_form_for @invite do |f| %>
+                    <%= f.input :invite, as: :hidden, input_html: { value: invite.id } %>
+                    <%= f.button :submit, 'Aceitar', class: 'btn btn-primary mb-3' %>
+                    <%= link_to "Recusar", invite_path(invite), method: :delete, class: "btn btn-danger mb-3", data: { confirm: "Tem certeza?" } %>
+        <% end %>
+                </ul>
+            </div>
+        <% end -%>
+    </div>
+</main>
+
+<%= render "components/menu" %>

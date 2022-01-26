@@ -1,0 +1,10 @@
+<main>    
+    <div class="section-padrao">
+        <h2 class="subtitulo">Conversas</h2>
+        <% @chat_rooms.each do |chat_room| -%>
+            <%= link_to "<p>Conversa com: #{chat_room.team.name}</p>".html_safe, chat_room_path(chat_room.id), class: 'btn btn-primary' %>
+        <% end -%>
+    </div>
+</main>
+
+<%= render "components/menu" %>

@@ -10,20 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_05_014131) do
-
-  create_table "chat_room_teams", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "chat_room_id"
-    t.integer "team_id"
-    t.index ["chat_room_id"], name: "index_chat_room_teams_on_chat_room_id"
-    t.index ["team_id"], name: "index_chat_room_teams_on_team_id"
-  end
+ActiveRecord::Schema.define(version: 2022_01_26_144704) do
 
   create_table "chat_rooms", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "team_id"
+    t.integer "user_id"
+    t.index ["team_id"], name: "index_chat_rooms_on_team_id"
+    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
+  end
+
+  create_table "complaints", force: :cascade do |t|
+    t.string "message"
+    t.integer "team_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_complaints_on_team_id"
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -70,10 +73,10 @@ ActiveRecord::Schema.define(version: 2022_01_05_014131) do
     t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "team_id"
     t.integer "chat_room_id"
+    t.integer "user_id"
     t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
-    t.index ["team_id"], name: "index_messages_on_team_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -131,6 +134,7 @@ ActiveRecord::Schema.define(version: 2022_01_05_014131) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "complaints", "teams"
   add_foreign_key "invite_teams", "invites"
   add_foreign_key "invite_teams", "teams"
 end

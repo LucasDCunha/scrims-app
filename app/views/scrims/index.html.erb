@@ -1,5 +1,5 @@
 <main>
-    <h2 class="subtitulo">Próximas Scrims</h2>
+    <h2 class="subtitulo">Próximas Scrims  <%= link_to "Meus convites", invites_path(), class: 'btn btn-primary' %></h2> 
     <% @teams.each do |team| -%>
         <% team.team_scrims.each do |team_scrim| -%>
             <% if team_scrim.scrim.team_scrim_ids.count == 2 -%>

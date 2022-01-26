@@ -1,0 +1,17 @@
+<main>    
+    <div class="section-padrao">
+        <h2 class="subtitulo">Conversa com: <%= @chat_room.team.name %></h2>
+        <% @messages.each do |message| -%>
+            <% if message.user == current_user -%> <p class="minha"> <%= message.content%> </p> <%end-%>
+            <% if message.user != current_user -%> <p class="dele"> <%= message.content%> </p> <%end-%>
+        <% end -%>
+    </div>
+
+    <%= simple_form_for @message do |f| %>
+        <%= f.input :chat_room, as: :hidden, input_html: { value: @chat_room.id } %>
+        <%= f.input :content, :label => 'Mensagem', class:'labelbtn' %>
+        <%= f.button :submit, 'Enviar', class: 'btn btn-primary botao-busca' %>
+    <% end %>
+</main>
+
+<%= render "components/menu" %>
