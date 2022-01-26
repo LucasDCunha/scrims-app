@@ -282,3 +282,27 @@ ul {
 .deletar-conta {
     margin-bottom: 1.5em;;
 }
+
+.minha {
+    color: white;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 1em;
+    margin-left: 50%;
+    width: 20%;
+    word-wrap: break-word;
+}
+
+.dele {
+    color: #b38f00;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 1em;
+    margin-left: 35%;
+    width: 20%;
+    word-wrap: break-word;
+}
+
+.string label {
+    margin-right: 1em;
+}
