@@ -23,7 +23,7 @@
             <a href=""><i class="fas fa-history"></i> Histórico</a>
         </div>
         <div class="divlink">
-            <a href=""><i class='far fa-comments'></i> Mensagens</a>
+            <%= link_to "<i class='far fa-comments'></i> Mensagens".html_safe, chat_rooms_path() %>
         </div>
         <div class="divlink">
             <%= link_to "<i class='fas fa-user-edit'></i> Minhas Equipes".html_safe, teams_path(), class: 'nav-link' %>

@@ -23,6 +23,7 @@ class TeamsController < ApplicationController
         @favorite = Favorite.new()
         @favorites = Favorite.all.select {|t|t.user == current_user}
         @invite = Invite.new()
+        @chat_room = ChatRoom.new()
         @my_teams = Team.all.select { |t|
             t.user == current_user
         }

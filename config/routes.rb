@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   resources :invite_teams
   resources :evaluations
   resources :complaints
+  resources :messages
+  resources :chat_rooms
 end
