@@ -31,7 +31,11 @@ class InvitesController < ApplicationController
     end
 
     def destroy(invite = nil)
-        @invite = Invite.find(params[:id])
+        if invite == nil
+            @invite = Invite.find(params[:id])
+        else
+            @invite = Invite.find(invite)
+        end
         @invite.destroy
         redirect_to root_path() if invite == nil
     end

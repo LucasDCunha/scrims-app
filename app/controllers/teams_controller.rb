@@ -78,6 +78,13 @@ class TeamsController < ApplicationController
         @team.save
     end
 
+    def tranfer_team
+        @teams = Team.all.select { |t|
+            t.user == current_user
+        }
+        @users = User.all
+    end
+
     private
 
     def set_team

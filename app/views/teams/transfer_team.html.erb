@@ -1,0 +1,14 @@
+<main>
+    <div class="section-padrao">
+        <h2 class="subtitulo">Transferir</h2>
+        <%= simple_form_for teams_url do |f| %>
+            <%= f.input :team, :label => 'Time:', collection: @teams %>
+            <%= f.input :user, :label => 'Usuario:', collection: @users %>
+            <%= f.button :submit, 'Tranferir', class: 'btn btn-primary botao-busca' %>
+        <% end %>
+    </div>
+
+</main>
+
+
+<%= render "components/menu" %>

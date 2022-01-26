@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
   get '/search_team', to: 'teams#search_team'
 
+  get '/transfer_team', to: 'teams#transfer_team'
+
   post '/create_scrim', to: 'invites#create_scrim'
 
   resources :users, except: %i[index new create]
