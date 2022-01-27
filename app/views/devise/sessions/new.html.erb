@@ -1,3 +1,8 @@
+<link href="https://fonts.googleapis.com/css?family=Changa|Varela+Round&display=swap" rel="stylesheet">
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <h1 class="titulo">BSI</h1>
 <h2 class="subtitulo">Base de Scrim Integrada</h2>
 <div class="div-form">
@@ -11,12 +16,12 @@
       <%= f.label :senha %><br />
       <%= f.password_field :password, autocomplete: "current-password" %>
     </div>
-    <div class="pos-form">
-      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
         <div class="recover-senha">
           <%= link_to "Esqueceu sua senha?", new_password_path(resource_name) %>
         </div>
       <% end %>
+    <div class="pos-form">
       <div class="container-login">
         <% if devise_mapping.rememberable? %>
           <div class="field remember">
@@ -37,3 +42,4 @@
     <% end %>
   </div>
 </div>
+<script src="https://apis.google.com/js/platform.js" async defer></script>

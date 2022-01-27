@@ -9,7 +9,7 @@
 
     <%= simple_form_for @message do |f| %>
         <%= f.input :chat_room, as: :hidden, input_html: { value: @chat_room.id } %>
-        <%= f.input :content, :label => 'Mensagem' %>
+        <%= f.input :content, :label => 'Mensagem', class:'labelbtn' %>
         <%= f.button :submit, 'Enviar', class: 'btn btn-primary botao-busca' %>
     <% end %>
 </main>
