@@ -1,3 +1,8 @@
+<link href="https://fonts.googleapis.com/css?family=Changa|Varela+Round&display=swap" rel="stylesheet">
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <h1 class="titulo">BSI</h1>
 <h2 class="subtitulo">Base de Scrim Integrada</h2>
 <div class="div-form">
@@ -22,9 +27,11 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-    <div class="actions pos-form">
+    <div class="pos-form" id="cadastrar">
       <%= f.submit "Cadastrar" %>
     </div>
+    <div class="container-cadastre">
+      <p>Já possui uma conta?</p>
+    </div>
   <% end %>
-
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
