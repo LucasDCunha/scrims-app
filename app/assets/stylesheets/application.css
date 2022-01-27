@@ -256,7 +256,7 @@ ul {
 }
 
 .botao-login input:hover {
-    background-color: #cfc8ab;
+    background-color: #4d400f;
 }
 
 .botao-password {
@@ -297,7 +297,7 @@ ul {
 }
 
 #cadastrar input:hover {
-    background-color: #cfc8ab;
+    background-color: #4d400f;
 }
 
 .container-busca-equipes {
@@ -356,8 +356,34 @@ ul {
     margin-bottom: 2em;
 }
 
+.atualizar-usuario input {
+    background-color: #b38f00;
+    color: white;
+    width: 6em;
+    height: 2em;
+    border-width: 0;
+    border-radius: 15em;
+}
+
+.atualizar-usuario input:hover {
+    background-color: #4d400f;
+}
+
 .deletar-conta {
     margin-bottom: 1.5em;;
+}
+
+.deletar-conta input {
+    background-color: #b38f00;
+    color: white;
+    width: 10em;
+    height: 2em;
+    border-width: 0;
+    border-radius: 15em;   
+}
+
+.deletar-conta input:hover {
+    background-color: #4d400f;
 }
 
 .minha {
