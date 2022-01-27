@@ -64,5 +64,31 @@ window.addEventListener("wheel", function(e) {
             console.log(team2.value);
         }
     }
+
+    //TRANSFER TEAM SELECTOR
+    if(document.getElementById("userSelector")) {
+        myTeamSelectorTransfer = document.getElementById("myTeamSelectorTransfer");
+        
+        myTeamSelectorTransfer.addEventListener('change', update)
+        
+        function update(e) {
+            team = document.getElementById("transf_info_team");
+            team.value = myTeamSelectorTransfer.value;
+            console.log(team.value);
+        }
+    }
+
+    //TRANSFER USER SELECTOR
+    if(document.getElementById("userSelector")) {
+        userSelectorTransfer = document.getElementById("userSelector");
+        
+        userSelectorTransfer.addEventListener('change', update)
+        
+        function update(e) {
+            user = document.getElementById("transf_info_user");
+            user.value = userSelectorTransfer.value;
+            console.log(user.value);
+        }
+    }
     
 });

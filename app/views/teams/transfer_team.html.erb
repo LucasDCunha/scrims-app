@@ -1,11 +1,21 @@
 <main>
     <div class="section-padrao">
         <h2 class="subtitulo">Transferir</h2>
-        <%= simple_form_for teams_url do |f| %>
-            <%= f.input :team, :label => 'Time:', collection: @teams %>
-            <%= f.input :user, :label => 'Usuario:', collection: @users %>
-            <%= f.button :submit, 'Tranferir', class: 'btn btn-primary botao-busca' %>
-        <% end %>
+        <select name="team" id="myTeamSelectorTransfer">
+          <% @teams.each do |team| -%>
+              <option value="<%=team.id%>"><%=team.name%></option>          
+          <% end -%>
+        </select>
+        <p class="m-3">para</p>
+        <select name="user" id="userSelector">
+          <% @users.each do |user| -%>
+              <option value="<%=user.id%>"><%=user.email%></option>          
+          <% end -%>
+        </select>
+        <input type="hidden" id="transf_info_team" name="transf_info_team" value="<%= @transfer[:team] %>">
+        <input type="hidden" id="transf_info_user" name="transf_info_user" value="<%= @transfer[:user] %>">
+        <br><br>
+        <%= link_to "Tranferir", team_transf_path(@transfer), method: :post, class: 'btn btn-primary' %>
     </div>
 
 </main>
