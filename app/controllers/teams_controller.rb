@@ -87,9 +87,8 @@ class TeamsController < ApplicationController
     end
 
     def team_transf
-        pry
-        @team = Team.find(params[:transf][:team].to_i)
-        @team.user_id = params[:transf][:user].to_i
+        @team = Team.find(params[:team].to_i)
+        @team.user_id = params[:user].to_i
         @team.save
         redirect_to teams_path()
     end
