@@ -90,5 +90,7 @@ window.addEventListener("wheel", function(e) {
             console.log(user.value);
         }
     }
-    
+
 });
+
+setTimeout(function () {document.getElementById('alert').style.display='none'}, 3000);

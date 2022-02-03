@@ -17,8 +17,10 @@ class InvitesController < ApplicationController
             if @invite.save
                 invite_teams_controller.create(invite: @invite.id, team: params["invite"]["team1"])
                 invite_teams_controller.create(invite: @invite.id, team: params["invite"]["team2"])
+                flash[:success] = "Convite enviado com sucesso!"
                 redirect_to search_team_path()
             else
+                flash[:danger] = "Erro ao criar o convite!"
                 redirect_to root_path()
             end
         end
@@ -27,6 +29,7 @@ class InvitesController < ApplicationController
     def create_scrim(invite)
         scrim_controller = ScrimsController.new
         scrim_controller.create(invite)
+        flash[:success] = "Convite aceito com sucesso!"
         redirect_to scrims_path()
     end
 

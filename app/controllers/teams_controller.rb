@@ -51,12 +51,14 @@ class TeamsController < ApplicationController
             flash[:success] = "Time criado com sucesso!"
             redirect_to teams_path()
         else
+            flash[:danger] = "Erro oa criar time!"
             render :new
         end
     end
 
     def update
         if @team.update(team_params)
+            flash[:success] = "Time atualizado com sucesso!"
           redirect_to teams_path()
         else
           render :edit
@@ -65,6 +67,7 @@ class TeamsController < ApplicationController
     
     def destroy
         @team.destroy
+        flash[:success] = "Time excluido com sucesso!"
         redirect_to teams_path()
     end
 

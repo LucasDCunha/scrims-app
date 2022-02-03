@@ -15,8 +15,10 @@ class ScrimsController < ApplicationController
             if buscar_scrim(team_id)
                 if @scrim.save
                     team_scrim_controller.create(scrim: @scrim.id, team: params["scrim"]["team"])
+                    flash[:success] = "Scrim criada com sucesso!"
                     redirect_to root_path()
                 else
+                    flash[:danger] = "Erro ao criar scrim!"
                     redirect_to root_path()
                 end
             else

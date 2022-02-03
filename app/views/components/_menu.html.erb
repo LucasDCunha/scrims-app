@@ -3,6 +3,12 @@
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<% flash.each do |name, value| -%>
+    <div class="alert alert-<%= name %>" id="alert" role="alert">
+        <%= value %>
+    </div>
+<% end -%>
+
 <nav class="lateral">
     <div class="divtitulo">
         <h1>BSI</h1>

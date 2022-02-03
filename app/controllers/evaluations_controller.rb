@@ -13,6 +13,7 @@ class EvaluationsController < ApplicationController
         @evaluation.save if check_evaluation(@evaluation)
         enemy = @evaluation.scrim.team_scrims.select {|t| t.team.user != current_user}.first.team.id
         TeamsController.new.recalc_grade(enemy)
+        flash[:success] = "Time avaliado com sucesso!"
         redirect_to root_path()
     end
 

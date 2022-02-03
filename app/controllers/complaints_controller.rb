@@ -9,8 +9,10 @@ class ComplaintsController < ApplicationController
         @complaint = Complaint.new(complaint_params)
         @complaint.team = Team.find(params[:complaint][:team] .to_i)
         if @complaint.save
+            flash[:success] = "Reclamacao craida com sucesso!"
             redirect_to root_path()
         else
+            flash[:danger] = "Erro ao criar a reclamacao com sucesso!"
             render :new
         end
     end

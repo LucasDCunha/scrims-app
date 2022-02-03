@@ -415,8 +415,6 @@ ul {
     max-width: 400px;
     display: inline;
     float: left;
-}
-
-.alertas-sistema {
-    width: 100%;
+    position: fixed;
+    margin: 16px;
 }
