@@ -409,3 +409,14 @@ ul {
 .string label {
     margin-right: 1em;
 }
+
+.alert {
+    z-index: 99999999;
+    max-width: 400px;
+    display: inline;
+    float: left;
+}
+
+.alertas-sistema {
+    width: 100%;
+}

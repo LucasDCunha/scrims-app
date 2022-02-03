@@ -15,6 +15,13 @@
   </head>
 
   <body>
+    <% flash.each do |name, value| -%>
+      <div class="alertas-sistema">
+        <div class="alert alert-<%= name %>" role="alert">
+          <%= value %>
+        </div>
+      </div>  
+    <% end -%>
     <%= yield %>
   </div>
     <script src="https://apis.google.com/js/api.js"></script>

@@ -48,14 +48,14 @@ class TeamsController < ApplicationController
         @team.user = current_user
         @team.number_off_athletes = 0
         if @team.save
-            redirect_to root_path()
+            flash[:success] = "Time criado com sucesso!"
+            redirect_to teams_path()
         else
             render :new
         end
     end
 
     def update
-        p @team
         if @team.update(team_params)
           redirect_to teams_path()
         else
@@ -65,7 +65,7 @@ class TeamsController < ApplicationController
     
     def destroy
         @team.destroy
-        redirect_to root_path()
+        redirect_to teams_path()
     end
 
     def recalc_grade(enemy)
