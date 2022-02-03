@@ -19,13 +19,12 @@ window.addEventListener("wheel", function(e) {
     if(document.getElementById("teamInput")) {
         teamInput = document.getElementById("teamInput")
         
-        teamInput.addEventListener('keydown', update)
+        teamInput.addEventListener('keyup', update)
         
         function update(e) {
-            teamOutputsDivs = document.querySelectorAll('div.container-padrao.container-equipes.container-busca-equipes');
-            teamOutputsLis = document.querySelectorAll('li');
+            teamOutputsDivs = document.querySelectorAll('div.container-padrao.container-equipes.container-busca-equipes.select');
             var index = 0;
-            teamOutputsLis.forEach(li => {
+            teamOutputsDivs.forEach(li => {
                 if(teamInput.value == '') {
                     teamOutputsDivs[index].classList.remove("d-none")
                 }

@@ -418,3 +418,7 @@ ul {
     position: fixed;
     margin: 16px;
 }
+
+.select {
+    padding-bottom: 1px;
+}

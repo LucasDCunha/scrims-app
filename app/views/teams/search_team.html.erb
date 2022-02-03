@@ -7,7 +7,7 @@
   </div>
 
   <% @teams.each do |team| -%>
-      <div class="container-padrao container-equipes container-busca-equipes">
+      <div class="container-padrao container-equipes container-busca-equipes select">
           <ul class="dados-equipe">
             <li class="teamOutputs"><%= team.name %></li>
             <li class="qtdjogadores">Nota: <%= team.grade != nil ? team.grade : "Sem Nota" %> </li>
