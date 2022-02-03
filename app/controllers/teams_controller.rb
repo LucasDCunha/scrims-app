@@ -59,9 +59,9 @@ class TeamsController < ApplicationController
     def update
         if @team.update(team_params)
             flash[:success] = "Time atualizado com sucesso!"
-          redirect_to teams_path()
+            redirect_to teams_path()
         else
-          render :edit
+            render :edit
         end
     end
     
@@ -86,13 +86,14 @@ class TeamsController < ApplicationController
             t.user == current_user
         }
         @users = User.all
-        @transfer = { :team => 3, :user => 1 }
+        @transfer = { :team => 3, :user => 1 } if(User.find(1) != nil && Team.find(3) != nil)
     end
 
     def team_transf
         @team = Team.find(params[:team].to_i)
         @team.user_id = params[:user].to_i
         @team.save
+        flash[:success] = "Time transferido com sucesso!"
         redirect_to teams_path()
     end
 
