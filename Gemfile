@@ -62,3 +62,5 @@ gem 'devise'
 gem 'simple_form'
 gem 'rest-client'
 gem 'dotenv'
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-google-oauth2'
